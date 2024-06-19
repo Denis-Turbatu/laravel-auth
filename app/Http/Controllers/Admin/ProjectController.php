@@ -14,7 +14,8 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        return view('admin.projects.index');
+        $listaProgetti = Project::all();
+        return view('admin.projects.index', compact('listaProgetti'));
     }
 
     /**
@@ -42,8 +43,8 @@ class ProjectController extends Controller
 
         // salvo i data nel DB
 
-        dd($project);
-        // $project->save();
+        // dd($project);
+        $project->save();
 
         // reindirizzo l'utente
         return redirect()->route("admin.projects.index");
