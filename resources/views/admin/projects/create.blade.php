@@ -15,7 +15,7 @@
             </div>
         @endif
 
-        <form action="{{ route('admin.projects.store') }}" method="POST">
+        <form action="{{ route('admin.projects.store') }}" method="POST" class="mb-3">
             {{-- Cookie per far riconoscere il form al server --}}
             @csrf
 
@@ -61,6 +61,7 @@
 
             <button class="btn btn-success" type="submit">Salva</button>
         </form>
+
+        <a href="{{route('admin.projects.index')}}" class="text-decoration-none text-white bg-danger p-2 rounded-2">Torna alla pagina Iniziale</a>
     </div>
-    <a href="{{ route('admin.projects.index') }}">Torna Indietro</a>
 @endsection
