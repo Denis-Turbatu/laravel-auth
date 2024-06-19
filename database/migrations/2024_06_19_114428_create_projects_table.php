@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('title')->unique();
             $table->string('thumb');
-            $table->string('description');
+            $table->text('description');
             $table->string('start_date');
             $table->string('end_date');
             $table->string('type');
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }
