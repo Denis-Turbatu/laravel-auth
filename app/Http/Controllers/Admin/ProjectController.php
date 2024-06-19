@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreProjectRequest;
 use Illuminate\Http\Request;
+use App\Models\Project;
 
 class ProjectController extends Controller
 {
@@ -20,7 +22,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.projects.create');
     }
 
     /**
@@ -28,7 +30,23 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // ottengo i data dalla request
+        $data = $request->all();
+
+        // creo una nuova istanza
+        $project = new Project();
+
+        // uso fill() per poter inserire i dati contenuti in $data
+        $project->fill($data);
+        $project->slug = $project->title."-".rand(00000, 99999);
+
+        // salvo i data nel DB
+
+        dd($project);
+        // $project->save();
+
+        // reindirizzo l'utente
+        return redirect()->route("admin.projects.index");
     }
 
     /**
