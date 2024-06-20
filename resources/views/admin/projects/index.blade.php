@@ -31,51 +31,14 @@
                             <td>{{$progetto->description}}</td>
                             <td>{{$progetto->slug}}</td>
                             <td>
-                                <a href="#">Modifica</a>
+                                <a href="{{route('admin.projects.show', ['project'=>$progetto->slug])}}">Dettagli</a>
+                                <a href="{{route('admin.projects.edit', ['project'=>$progetto->slug])}}">Modifica</a>
                                 <a href="#">Elimina</a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
-
-            {{-- <div class="card border border-0 m-4" style="width: 17rem;">
-                    <img src="{{ asset($defaultImage) }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <p class="card-text">
-                            Titolo:
-                            <span class="fw-semibold">
-                                {{ $progetto['title'] }}
-                            </span>
-                        </p>
-                        <div>
-                            <p class="card-text">
-                                Data di inizio:
-                                <span class="fw-semibold">
-                                    {{ $progetto['start_date'] }}
-                                </span>
-                            </p>
-                            <p class="card-text">
-                                Data di fine:
-                                <span class="fw-semibold">
-                                    {{ $progetto['end_date'] }}
-                                </span>
-                            </p>
-                        </div>
-                        <p class="card-text">
-                            Tipo:
-                            <span class="fw-semibold">
-                                {{ $progetto['type'] }}
-                            </span>
-                        </p>
-                        <p class="card-text">
-                            Slug:
-                            <span class="fw-semibold">
-                                {{ $progetto['slug'] }}
-                            </span>
-                        </p>
-                    </div>
-                </div> --}}
         </div>
     </div>
 @endsection
