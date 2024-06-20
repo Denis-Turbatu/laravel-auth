@@ -11,7 +11,7 @@ class StoreProjectRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -43,7 +43,7 @@ class StoreProjectRequest extends FormRequest
 
             // descrizione
             'description.required' => 'La descrizione deve essere inserita',
-            'description.min' => 'La serie deve contenere almeno 20 caratteri',
+            'description.min' => 'La descrizione deve contenere almeno 20 caratteri',
 
             // data inizio
             'start_date.required' => 'La data di inizio progetto deve essere inserita',

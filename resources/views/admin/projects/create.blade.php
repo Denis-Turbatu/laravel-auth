@@ -21,25 +21,25 @@
 
             <div class="mb-3">
                 <label for="title" class="form-label fw-semibold">Titolo</label>
-                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title">
+                <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title"  value="{{ old('title') }}">
             </div>
 
             <div class="mb-3">
                 <label for="thumb" class="form-label fw-semibold">Immagine</label>
                 <input type="text" class="form-control @error('thumb') is-invalid @enderror" id="thumb"
-                    name="thumb">
+                    name="thumb" value="{{ old('thumb') }}">
             </div>
 
             <div class="mb-3">
                 <label for="start_date" class="form-label fw-semibold">Data di Inizio</label>
                 <input type="text" class="form-control @error('start_date') is-invalid @enderror" id="start_date"
-                    name="start_date">
+                    name="start_date" value="{{ old('start_date')  }}">
             </div>
 
             <div class="mb-3">
                 <label for="end_date" class="form-label fw-semibold">Data di Fine</label>
                 <input type="text" class="form-control @error('end_date') is-invalid @enderror" id="end_date"
-                    name="end_date">
+                    name="end_date" value="{{ old('end_date') }}">
             </div>
 
             <div class="mb-3">
@@ -56,7 +56,7 @@
 
             <div class="mb-3">
                 <label for="description" class="form-label fw-semibold">Descrizione</label>
-                <textarea class="form-control" name="description" rows="6"></textarea>
+                <textarea class="form-control" name="description" rows="6">{{ old('description') }}</textarea>
             </div>
 
             <button class="btn btn-success" type="submit">Salva</button>
