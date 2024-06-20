@@ -33,7 +33,11 @@
                             <td>
                                 <a href="{{route('admin.projects.show', ['project'=>$progetto->slug])}}">Dettagli</a>
                                 <a href="{{route('admin.projects.edit', ['project'=>$progetto->slug])}}">Modifica</a>
-                                <a href="#">Elimina</a>
+                                <form action="{{route('admin.projects.destroy', ['project'=>$progetto->slug])}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit">Elimina</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
