@@ -13,10 +13,34 @@
                 class="px-4 py-2 bg-success text-decoration-none text-white rounded-2">Crea</a>
         </div>
         <div class="row">
-            @foreach ($listaProgetti as $progetto)
-                <div class="card border border-0 m-4" style="width: 17rem;">
-                    <img src="{{ asset($defaultImage) }}"
-                        class="card-img-top" alt="...">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Titolo</th>
+                        <th scope="col">Descrizione</th>
+                        <th scope="col">Slug</th>
+                        <th scope="col">Azioni</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($listaProgetti as $progetto)
+                        <tr>
+                            <th scope="row">{{$progetto->id}}</th>
+                            <td>{{$progetto->title}}</td>
+                            <td>{{$progetto->description}}</td>
+                            <td>{{$progetto->slug}}</td>
+                            <td>
+                                <a href="#">Modifica</a>
+                                <a href="#">Elimina</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
+            {{-- <div class="card border border-0 m-4" style="width: 17rem;">
+                    <img src="{{ asset($defaultImage) }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <p class="card-text">
                             Titolo:
@@ -51,8 +75,7 @@
                             </span>
                         </p>
                     </div>
-                </div>
-            @endforeach
+                </div> --}}
         </div>
     </div>
 @endsection
