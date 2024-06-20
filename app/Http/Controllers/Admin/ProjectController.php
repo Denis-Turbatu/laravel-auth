@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProjectRequest;
 use Illuminate\Http\Request;
 use App\Models\Project;
 
+
 class ProjectController extends Controller
 {
     /**
@@ -39,7 +40,7 @@ class ProjectController extends Controller
 
         // uso fill() per poter inserire i dati contenuti in $data
         $project->fill($data);
-        $project->slug = $project->title."-".rand(00000, 99999);
+        $project->slug = $project->title . "-" . rand(00000, 99999);
 
         // salvo i data nel DB
 
@@ -66,13 +67,30 @@ class ProjectController extends Controller
         return view('admin.projects.edit', compact('project'));
     }
 
+    // FUNZIONE CUSTOM
+    public function getBodySlug(Project $project): string
+    {
+        // imposto il simbolo da controllare
+        $symbol = '-';
+        // capisco in quale posizione trovo quel simbolo
+        $position = strrpos($project->slug, $symbol);
+        // dall'intero slug rimuovo la parte del titolo rimanendo con '-#####'
+        if ($position !== false) {
+            return substr($project->slug, $position + 1);
+        }
+    }
+
     /**
      * Update the specified resource in storage.
      */
     public function update(StoreProjectRequest $request, Project $project)
     {
         $data = $request->all();
+        $slugBody = $this->getBodySlug($project);
+        $project->slug = $request->title . '-' . $slugBody;
+        $data['slug'] = $project->slug;
         $project->update($data);
+
         return redirect()->route('admin.projects.show', ['project' => $project->slug]);
     }
 
